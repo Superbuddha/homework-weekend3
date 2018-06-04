@@ -1,6 +1,7 @@
 require('pg')
 require_relative('../db/sql_runner')
 
+
 class Customer
   attr_accessor :name, :funds
   attr_reader :id

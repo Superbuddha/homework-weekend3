@@ -1,5 +1,8 @@
 require('pg')
 require_relative('../db/sql_runner')
+require_relative('customer')
+require_relative('film')
+
 
 class Ticket
   attr_accessor :customer_id, :film_id
@@ -17,7 +20,7 @@ end
     sql = "INSERT INTO tickets (customer_id, film_id) VALUES ($1, $2) RETURNING id"
     values = [@customer_id, @film_id]
     ticket = SqlRunner.run(sql, values)[0];
-    @id = casting['id'].to_i
+    @id = ticket['id'].to_i
   end
 
   def update()
